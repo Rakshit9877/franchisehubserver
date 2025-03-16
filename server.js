@@ -83,21 +83,21 @@ var SalesRef=mongoose.model("salesCollection",SalesSchema)
 app.post("/saveapplicant",async(req,resp)=>{
     let filename="nopic.jpg";
 
-    if (req.files && req.files.ppic) {
-        const uniqueFilename = `${Date.now()}_${req.files.ppic.name}`;
-        const filepath = path.join(__dirname, "..","uploads", uniqueFilename);
+    // if (req.files && req.files.ppic) {
+    //     const uniqueFilename = `${Date.now()}_${req.files.ppic.name}`;
+    //     const filepath = path.join(__dirname, "..","uploads", uniqueFilename);
 
-        try {
-            await req.files.ppic.mv(filepath);
-            console.log("File uploaded successfully");
-            filename = uniqueFilename; 
-        } catch (err) {
-            console.error("File upload failed:", err);
-            return resp.json({ status: false, msg: "File upload failed" });
-        }
-    } else {
-        console.log("No file uploaded");
-    }
+    //     try {
+    //         await req.files.ppic.mv(filepath);
+    //         console.log("File uploaded successfully");
+    //         filename = uniqueFilename; 
+    //     } catch (err) {
+    //         console.error("File upload failed:", err);
+    //         return resp.json({ status: false, msg: "File upload failed" });
+    //     }
+    // } else {
+    //     console.log("No file uploaded");
+    // }
 
     var userJson =new ApplicantRef(req.body);
 
